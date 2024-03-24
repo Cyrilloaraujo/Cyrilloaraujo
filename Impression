@@ -1,30 +1,29 @@
-#NoEnv
-
-; Replace 'your-webpage-url-here.com' with the actual URL
+; Define the URL and prompt.
 url := "http://your-webpage-url-here.com"
-
-; Define the prompt you want to use
 prompt := "Make this text more concise with brevity without losing its meaning. Each short sentence should be numbered with a maximum of 3-5 sentences for important clinical findings."
 
 ; Hotkey: Ctrl + Alt + G
 ^!g::OpenAndPrepareGPT4(url, prompt)
 
 OpenAndPrepareGPT4(url, prompt) {
-    ; Open the default web browser to the specified URL
-    Run(url)
+    ; Open the default web browser to the specified URL.
+    Run, % url
     
-    ; Adjust the below line to target your specific browser window. This might require specific window titles or classes.
-    WinWait("ahk_exe chrome.exe") ; Example for Chrome, adjust accordingly.
+    ; Adjust the below line to target your specific browser window.
+    WinWait, ahk_exe chrome.exe ; Example for Chrome, adjust accordingly.
     
-    ; Give the page some time to load (this time may need to be adjusted)
-    Sleep(5000)
+    ; Allow the page some time to load.
+    Sleep, 5000
     
-    ; The following steps would be highly specific to the structure of your web page.
-    ; This could include sending keystrokes to navigate and input the prompt into a form, for example:
-    ; SendInput("{Tab 3}") ; Adjust based on the form's structure
-    ; SendInput(prompt)
-
-    ; Note: Direct interaction with web page elements (e.g., input fields, buttons) via AHK is limited.
+    ; Navigate and input the prompt into a form.
+    ; The sequence of keys sent might need to be tailored to the specific webpage's requirements.
+    
+    ; For demonstration purposes, replace these SendInput commands with those that match the web form you're targeting.
+    ; SendInput, {Tab 3} ; Navigate to the input field.
+    ; SendInput, %prompt% ; Input the prompt.
+    
+    ; Note: Interaction with web page elements might require manual adjustment.
+    ; Consider using the web page's shortcut keys or access keys if available.
 }
 
 Return
