@@ -1,29 +1,17 @@
-; Define the URL and prompt.
-url := "http://your-webpage-url-here.com"
-prompt := "Make this text more concise with brevity without losing its meaning. Each short sentence should be numbered with a maximum of 3-5 sentences for important clinical findings."
+; Define the URL you want to open
+url := "https://example.com"
 
-; Hotkey: Ctrl + Alt + G
-^!g::OpenAndPrepareGPT4(url, prompt)
+; Define the hotkey, e.g., Ctrl + Shift + W
+^+w::OpenAndPaste(url)
 
-OpenAndPrepareGPT4(url, prompt) {
-    ; Open the default web browser to the specified URL.
-    Run, % url
-    
-    ; Adjust the below line to target your specific browser window.
-    WinWait, ahk_exe chrome.exe ; Example for Chrome, adjust accordingly.
-    
-    ; Allow the page some time to load.
-    Sleep, 5000
-    
-    ; Navigate and input the prompt into a form.
-    ; The sequence of keys sent might need to be tailored to the specific webpage's requirements.
-    
-    ; For demonstration purposes, replace these SendInput commands with those that match the web form you're targeting.
-    ; SendInput, {Tab 3} ; Navigate to the input field.
-    ; SendInput, %prompt% ; Input the prompt.
-    
-    ; Note: Interaction with web page elements might require manual adjustment.
-    ; Consider using the web page's shortcut keys or access keys if available.
+OpenAndPaste(url) {
+    ; Open the specified URL in the default web browser
+    Run(url)
+    ; Wait for the web browser window to become active. Adjust the title accordingly.
+    ; This example waits for Chrome, but you might need to change "ahk_exe chrome.exe" to match your browser.
+    WinWait("ahk_exe chrome.exe")
+    Sleep(5000) ; Wait for 5 seconds to ensure the page loads. Adjust timing as needed.
+    ; Attempt to paste the clipboard contents. This part may need adjustment based on the specific webpage.
+    ; The script assumes the webpage's input field is already focused or can be focused with Tab presses.
+    SendInput("^v") ; Ctrl+V to paste
 }
-
-Return
