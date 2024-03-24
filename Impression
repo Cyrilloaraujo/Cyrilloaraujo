@@ -1,16 +1,17 @@
 ; Hotkey: Ctrl+Alt+C
-^!c::
-    Send, ^c
-    ClipWait  ; Waits for the clipboard to contain text.
+^!c::  ; Ctrl+Alt+C
+{
+    Send("^c")
+    ClipWait()  ; Waits for the clipboard to contain text.
 
     ; Template for GPT-4 prompt
-    newClip := "create an impression with more clarity and brevity without losing its meaning for a medical professional to read and understand. Please create short sentences with numbers for each sentence with a maximum of 3 or 4 sentences.`n`n" . clipboard
+    newClip := "create an impression with more clarity and brevity without losing its meaning for a medical professional to read and understand. Please create short sentences with numbers for each sentence with a maximum of 3 or 4 sentences.`n`n" . Clipboard.All()
 
     ; Show the formatted prompt in a message box
-    MsgBox, 4, , % "Formatted Prompt:`n" . newClip . "`n`nCopy to clipboard?", 10
-    IfMsgBox, Yes
+    msgBoxOptions := MsgBox("Formatted Prompt:`n" . newClip . "`n`nCopy to clipboard?", "4", 10)
+    if (msgBoxOptions = "Yes")
     {
-        clipboard := newClip
-        MsgBox, , , % "Copied to clipboard!", 1.5
+        Clipboard := newClip
+        MsgBox("Copied to clipboard!", "", 1.5)
     }
-    return
+}
