@@ -1,8 +1,34 @@
-; CHATGPT = F3
-F3::
-    Run("chrome.exe", "https://chat.openai.com/")
-    Sleep(500)
-    clipboard := "Make the sentence a short impression for a radiology report: " clipboard
-    Sleep(500)
-    Send("^v{Enter}")
+#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
+SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
+
+; Replace 'your-webpage-url-here.com' with the actual URL where GPT-4 can be accessed
+url := "http://your-webpage-url-here.com"
+
+; Define the prompt you want to use
+prompt := "Make this text more concise with brevity without losing its meaning. Each short sentence should be numbered with a maximum of 3-5 sentences for important clinical findings."
+
+; Hotkey: Ctrl + Alt + G
+^!g::
+    ; Open the default browser to the specified URL
+    Run, %url%
+    
+    ; Wait for the browser to become active - adjust "ahk_exe yourbrowser.exe" accordingly
+    WinWait, ahk_exe chrome.exe
+    
+    ; Give the page some time to load (this time may need to be adjusted)
+    Sleep, 5000
+    
+    ; Here you would have the AHK script input the prompt into the appropriate field
+    ; This is highly specific to the web page's structure and cannot be generically scripted without more info
+    ; You might use something like this to send the prompt (if a text field is focused):
+    ; Send, %prompt%
+    
+    ; If the page and form are always structured the same way, you might be able to use Tab to navigate
+    ; For example, to hit Tab three times then enter the prompt, you could use:
+    ; Send, {Tab 3}
+    ; Send, %prompt%
+    
+    ; This is a placeholder - actual implementation would depend on the page's specifics
+    
 Return
