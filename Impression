@@ -1,8 +1,8 @@
 ; CHATGPT = F3
-F3: :
-Run, chrome.exe "https://chat.openai.com/"
-Sleep, 500
-Clipboard = "Make the sentence a short impression for a radiology report: %Clipboard%"
-Sleep, 500
-Send, ^v
-Send, {Enter} Return
+F3::
+    Run("chrome.exe https://chat.openai.com/")
+    Sleep(500)
+    clipboard := "Make the sentence a short impression for a radiology report: " clipboard
+    Sleep(500)
+    Send("^v{Enter}")
+return
