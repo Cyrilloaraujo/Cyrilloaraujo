@@ -1,17 +1,8 @@
-; Hotkey: Ctrl+Alt+C
-^!c::  ; Ctrl+Alt+C
-{
-    Send("^c")
-    ClipWait()  ; Waits for the clipboard to contain text.
-
-    ; Template for GPT-4 prompt
-    newClip := "create an impression with more clarity and brevity without losing its meaning for a medical professional to read and understand. Please create short sentences with numbers for each sentence with a maximum of 3 or 4 sentences.`n`n" . Clipboard.All()
-
-    ; Show the formatted prompt in a message box
-    msgBoxOptions := MsgBox("Formatted Prompt:`n" . newClip . "`n`nCopy to clipboard?", "4", 10)
-    if (msgBoxOptions = "Yes")
-    {
-        Clipboard := newClip
-        MsgBox("Copied to clipboard!", "", 1.5)
-    }
-}
+; CHATGPT = F3
+F3: :
+Run, chrome.exe "https://chat.openai.com/"
+Sleep, 500
+Clipboard = "Make the sentence a short impression for a radiology report: %Clipboard%"
+Sleep, 500
+Send, ^v
+Send, {Enter} Return
