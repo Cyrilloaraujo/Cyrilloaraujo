@@ -1,7 +1,7 @@
 - 👋 Hi, I’m @Cyrilloaraujo
 - 👀 I’m interested in voice recognition and assistance 
 - 🌱 I’m currently learning how to create software
-- 💞️ I’m looking to collaborate on any voice recogbition project or Internet of Medical things
+- 💞️ I’m looking to collaborate on any voice recognition project or Internet of Medical things
 - 📫 How to reach me cyrilloaraujo@gmail.com
 
 <!---
